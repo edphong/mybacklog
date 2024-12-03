@@ -2,8 +2,8 @@ package com.backlog.moviedatabase.controllers;
 
 import com.backlog.moviedatabase.models.TrendingMovies;
 import com.backlog.moviedatabase.config.ApiKeyProvider;
-import com.backlog.moviedatabase.models.Movie;
-import com.backlog.moviedatabase.models.Review;  
+import com.backlog.moviedatabase.models.TrendingMovie;
+import com.backlog.moviedatabase.models.MovieReview;  
 
 import java.util.List;
 
@@ -18,8 +18,8 @@ import org.springframework.core.ParameterizedTypeReference;  // For Parameterize
 import org.springframework.web.client.RestTemplate;  // For RestTemplate
 
 @RestController
-@RequestMapping("/api/movies") // Group your API routes
-public class MovieController {
+@RequestMapping("/api/movies") // concerned with grabbing movie ID's for movie details and reviews
+public class MovieDetailsController {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -27,13 +27,13 @@ public class MovieController {
     @Autowired
     private ApiKeyProvider apiKeyProvider;
 
-    @GetMapping("/film/{movieId}")
-    public Movie getMovie(@PathVariable String movieId) {
+    @GetMapping("/details/{movieId}")
+    public TrendingMovie getTrendingMovie(@PathVariable String movieId) {
         String apiKey = apiKeyProvider.getApiKey();
         String detailsAPI = "https://api.themoviedb.org/3/movie/" + movieId + "?language=en-US&api_key=" + apiKey;
         
         // Fetch movie details
-        Movie movieDetails = restTemplate.getForObject(detailsAPI, Movie.class);
+        TrendingMovie movieDetails = restTemplate.getForObject(detailsAPI, TrendingMovie.class); 
 
         return movieDetails;
     }

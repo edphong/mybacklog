@@ -1,6 +1,6 @@
 package com.backlog.moviedatabase.controllers;
 
-import com.backlog.moviedatabase.models.Review;
+import com.backlog.moviedatabase.models.MovieReview;
 import com.backlog.moviedatabase.config.ApiKeyProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/reviews")
-public class ReviewController {
+@RequestMapping("/api/movies")
+public class MovieReviewController {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -24,8 +24,8 @@ public class ReviewController {
     @Autowired
     private ApiKeyProvider apiKeyProvider;
 
-    @GetMapping("/{movieId}")
-    public List<Review> getReviews(@PathVariable String movieId) {
+    @GetMapping("reviews/{movieId}")
+    public List<MovieReview> getReviews(@PathVariable String movieId) {
         String apiKey = apiKeyProvider.getApiKey();
         String reviewsAPI = "https://api.themoviedb.org/3/movie/" + movieId + "/reviews?language=en-US&page=1&api_key=" + apiKey;
 
@@ -34,6 +34,6 @@ public class ReviewController {
                 reviewsAPI,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Review>>() {}).getBody();
+                new ParameterizedTypeReference<List<MovieReview>>() {}).getBody();
     }
 }

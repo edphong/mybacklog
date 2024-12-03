@@ -1,5 +1,5 @@
 package com.backlog.moviedatabase.models;
 
-public class TVShow {
+public class TVShowDetails {
     
 }

@@ -2,7 +2,7 @@ package com.backlog.moviedatabase.controllers;
 
 import com.backlog.moviedatabase.models.TrendingMovies;
 import com.backlog.moviedatabase.config.ApiKeyProvider;
-import com.backlog.moviedatabase.models.Movie;
+import com.backlog.moviedatabase.models.TrendingMovie;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class HomeController {
     private ApiKeyProvider apiKeyProvider;
 
     @GetMapping("/trending")
-    public List<Movie> getTrendingMovies() {
+    public List<TrendingMovie> getTrendingMovies() {
         String trendingAPI = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
         String apiKey = apiKeyProvider.getApiKey();
 

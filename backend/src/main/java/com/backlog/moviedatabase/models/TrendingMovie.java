@@ -2,9 +2,9 @@ package com.backlog.moviedatabase.models;
 
 import java.util.List;
 
-import com.backlog.moviedatabase.models.Review;
+import com.backlog.moviedatabase.models.TrendingMovie;
 
-public class Movie {
+public class TrendingMovie { // trending movie page
     private boolean adult;
     private String backdrop_path;
     private List<Integer> genre_ids;
