@@ -2,7 +2,7 @@ package com.backlog.moviedatabase.controllers;
 
 import com.backlog.moviedatabase.models.TrendingMovies;
 import com.backlog.moviedatabase.config.ApiKeyProvider;
-import com.backlog.moviedatabase.models.TrendingMovie;
+import com.backlog.moviedatabase.models.Movie;
 import com.backlog.moviedatabase.models.MovieReview;  
 
 import java.util.List;
@@ -28,12 +28,12 @@ public class MovieDetailsController {
     private ApiKeyProvider apiKeyProvider;
 
     @GetMapping("/details/{movieId}")
-    public TrendingMovie getTrendingMovie(@PathVariable String movieId) {
+    public Movie getTrendingMovie(@PathVariable String movieId) {
         String apiKey = apiKeyProvider.getApiKey();
-        String detailsAPI = "https://api.themoviedb.org/3/movie/" + movieId + "?language=en-US&api_key=" + apiKey;
+        String detailsAPI = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey;
         
         // Fetch movie details
-        TrendingMovie movieDetails = restTemplate.getForObject(detailsAPI, TrendingMovie.class); 
+        Movie movieDetails = restTemplate.getForObject(detailsAPI, Movie.class); 
 
         return movieDetails;
     }

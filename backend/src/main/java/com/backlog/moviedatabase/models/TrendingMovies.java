@@ -4,7 +4,7 @@ import java.util.List;
 
 public class TrendingMovies {
     private int page;
-    private List<TrendingMovie> results; // List of movies
+    private List<Movie> results; // List of movies
     private int totalPages;
     private int totalResults;
 
@@ -12,8 +12,8 @@ public class TrendingMovies {
     public int getPage() { return page; }
     public void setPage(int page) { this.page = page; }
 
-    public List<TrendingMovie> getResults() { return results; }
-    public void setResults(List<TrendingMovie> results) { this.results = results; }
+    public List<Movie> getResults() { return results; }
+    public void setResults(List<Movie> results) { this.results = results; }
 
     public int getTotalPages() { return totalPages; }
     public void setTotalPages(int totalPages) { this.totalPages = totalPages; }
