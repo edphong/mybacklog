@@ -2,7 +2,7 @@ package com.backlog.moviedatabase.controllers;
 
 import com.backlog.moviedatabase.config.ApiKeyProvider;
 import com.backlog.moviedatabase.models.MovieReview;
-import com.backlog.moviedatabase.models.MovieReviews; // This represents the wrapper for reviews
+import com.backlog.moviedatabase.models.MovieReviews; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/movies")
+@RequestMapping("/api/movies") // concerned with grabbing movie ID's for movie reviews 
 public class MovieReviewController {
 
     @Autowired
@@ -25,13 +25,10 @@ public class MovieReviewController {
 
     @GetMapping("/reviews/{movieId}")
     public List<MovieReview> getReviews(@PathVariable String movieId) {
-        String reviewsAPI = "https://api.themoviedb.org/3/movie/" + movieId + "/reviews";
         String apiKey = apiKeyProvider.getApiKey();
-
-        // Fetch the reviews data from the API
+        String reviewsAPI = "https://api.themoviedb.org/3/movie/" + movieId + "/reviews";
         MovieReviews response = restTemplate.getForObject(reviewsAPI + "?api_key=" + apiKey, MovieReviews.class);
 
-        // Return the list of reviews
         return response.getResults(); // Assuming `getResults()` returns a list of `MovieReview`
     }
 }

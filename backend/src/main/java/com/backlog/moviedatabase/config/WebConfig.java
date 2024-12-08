@@ -17,3 +17,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(true); // Allow cookies or credentials in the request
     }
 }
+
+// cross origin resourcec sharing class impleneted in web browsers to control how resources on a server can be accessed by web pages from different orgins 
